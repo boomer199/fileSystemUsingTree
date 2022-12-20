@@ -18,10 +18,10 @@
 
         </box>
     </div>
-    <div id = cardDiv>
-        <div id="addFile" class = "cards">
-            <div class = subHeader>Create Node</div>
-            <form id="new-node-form" class = "form" autocomplete="off">
+    <div id=cardDiv>
+        <div id="addFile" class="cards">
+            <div class=subHeader>Create Node</div>
+            <form id="new-node-form" class="form" autocomplete="off">
                 <label>
                     Name:
                     <input type="text" id="node-name" />
@@ -30,13 +30,13 @@
                 <label>
                     Type:
                     <select name="node-type" id="node-type">
-                      <option value="Folder">Folder</option>
-                      <option value="TXT">.txt</option>
-                      <option value="EXE">.exe</option>
-                      <option value="PNG">.png</option>
-                      <option value="PDF">.pdf</option>
-                      <option value="MP4">.mp4</option>
-                      <option value="MP3">.mp3</option>
+                        <option value="Folder">Folder</option>
+                        <option value="TXT">.txt</option>
+                        <option value="EXE">.exe</option>
+                        <option value="PNG">.png</option>
+                        <option value="PDF">.pdf</option>
+                        <option value="MP4">.mp4</option>
+                        <option value="MP3">.mp3</option>
 
                     </select>
                 </label>
@@ -49,23 +49,35 @@
                 <button type="submit">Add Item</button>
             </form>
         </div>
-        <div id = removeElements class = "cards">
-            <div class = subHeader>Delete Nodes</div>
-            <form id="delete-node-form" class = "form" autocomplete="off">
+        <div id=removeElements class="cards">
+            <div class=subHeader>Delete Nodes</div>
+            <form id="delete-node-form" class="form" autocomplete="off">
                 <label>
                     Name of Item to Delete:
                     <input type="text" id="node-delete" />
                 </label>
                 <button type="submit">Delete Item</button>
-    
+
             </form>
+        </div>
+        <div class="cards" id="node-search">
+            <div class="subHeader">Search for a Node</div>
+            <!-- search form -->
+            <form id="search-form">
+                <label for="search-input">Search:</label>
+                <input type="text" id="search-input" placeholder="Enter a node name">
+                <button type="submit">Go</button>
+            </form>
+
+            <!-- search results -->
+            <div id="search-results"></div>
+
         </div>
     </div>
 
 
-    
-
     <div id="tree-container"></div>
+    
     <script src="./public/main.js"></script>
 
     <footer>

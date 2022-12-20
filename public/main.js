@@ -8,6 +8,8 @@ class Node {
   
   class Tree {
 
+
+    
     constructor() {
 
       this.root = null;
@@ -25,8 +27,11 @@ class Node {
           this.root.children.push(newNode);
         }
       } else {
-        // otherwise, add the new Node as a child of the given parent Node
-        parentNode.children.push(newNode);
+        if(parentNode.type === "Folder"){
+          parentNode.children.push(newNode);
+        } else {
+          alert("cant add child to non-folder")
+        }
       } 
     }
   
@@ -105,6 +110,25 @@ class Node {
       }
     }
 
+    function searchTree(name) {
+      // use the findNode method to search for a node with the given name
+      const node = System.findNode(name);
+    
+      if (node) {
+        // if a node was found, return it
+        return node;
+      } else {
+        // if no node was found, return a message indicating that the search returned no results
+        return "No results found.";
+      }
+    }
+    
+    
+    function addNewItem(parent, name, type){
+      System.addNode(name, type, System.findNode(parent))
+    }
+    
+
 
 
 // Make tree
@@ -126,6 +150,7 @@ function toggleFolder(event) {
   const childrenContainer = nodeElement.querySelector(".children");
   childrenContainer.classList.toggle("hidden");
 }
+
 
 function generateHTML(node, container) {
   // create a div element for the node
@@ -169,21 +194,16 @@ function generateHTML(node, container) {
     nodeElement.classList.add("Folder");
     nodeElement.addEventListener("click", toggleFolder);
   }
+
+  generateNodeHTML(System.root)
 }
 
 
 
 const container = document.querySelector("#tree-container");
 generateHTML(System.root, container);
-
-
-
-function addNewItem(parent, name, type){
-  System.addNode(name, type, System.findNode(parent))
-
-}
-
 const form1 = document.querySelector("#new-node-form");
+const form2 = document.querySelector("#delete-node-form");
 
 form1.addEventListener("submit", event => {
   event.preventDefault();
@@ -201,8 +221,6 @@ form1.addEventListener("submit", event => {
   generateHTML(System.root, container);
 });
 
-const form2 = document.querySelector("#delete-node-form");
-
 form2.addEventListener("submit", event => {
   event.preventDefault();
 
@@ -214,4 +232,24 @@ form2.addEventListener("submit", event => {
   container.innerHTML = "";
 
   generateHTML(System.root, container);
+});
+
+// search form submission event handler
+document.getElementById("search-form").addEventListener("submit", event => {
+  event.preventDefault();
+
+  // get the search input value
+  const name = document.getElementById("search-input").value;
+
+  // search the tree for a node with the given name
+  const result = searchTree(name).name;
+  
+  // update the search results element with the search result
+  if(searchTree(name) != "No results found."){
+    document.getElementById("search-results").innerHTML = result + " was found, " + System.findParent(searchTree(name)).name + " is its parent!";
+  } else {
+    document.getElementById("search-results").innerHTML = "No results found."
+  }
+
+  
 });
