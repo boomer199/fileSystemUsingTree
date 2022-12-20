@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="public/styles/main.css" />
+
+    <title>File System</title>
+</head>
+
+<body>
+    <!-- ---------------------------- NAVBAR ---------------------------- -->
+    <div class="navbar">
+        <box class="element element-left"> File System
+        </box>
+        <box class="element">
+            <a href="https://github.com/boomer199/Visual-Representation-of-Algorithms" target=_blank>Github</a>
+            <a href="./public/information.html">Information</a>
+
+        </box>
+    </div>
+    <div id = cardDiv>
+        <div id="addFile" class = "cards">
+            <div class = subHeader>Create Node</div>
+            <form id="new-node-form" class = "form" autocomplete="off">
+                <label>
+                    Name:
+                    <input type="text" id="node-name" />
+                </label>
+                <br />
+                <label>
+                    Type:
+                    <select name="node-type" id="node-type">
+                      <option value="Folder">Folder</option>
+                      <option value="TXT">.txt</option>
+                      <option value="EXE">.exe</option>
+                      <option value="PNG">.png</option>
+                      <option value="PDF">.pdf</option>
+                      <option value="MP4">.mp4</option>
+                      <option value="MP3">.mp3</option>
+
+                    </select>
+                </label>
+                <br />
+                <label>
+                    Parent:
+                    <input type="text" id="node-parent" />
+                </label>
+                <br />
+                <button type="submit">Add Item</button>
+            </form>
+        </div>
+        <div id = removeElements class = "cards">
+            <div class = subHeader>Delete Nodes</div>
+            <form id="delete-node-form" class = "form" autocomplete="off">
+                <label>
+                    Name of Item to Delete:
+                    <input type="text" id="node-delete" />
+                </label>
+                <button type="submit">Delete Item</button>
+    
+            </form>
+        </div>
+    </div>
+
+
+    
+
+    <div id="tree-container"></div>
+    <script src="./public/main.js"></script>
+
+    <footer>
+        <p>Copyright &copy; 2022 File System Tree</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File System</title>
+    <link rel="stylesheet" href="./styles/information.css"/>
+  </head>
+  <body>
+    <div class="navbar">
+        <box class="element element-left"> File System
+        </box>
+        <box class="element">
+            <a href="https://github.com/boomer199/Visual-Representation-of-Algorithms" target=_blank>Github</a>
+            <a href="../">Home</a>
+
+        </box>
+    </div>
+    <main>
+      <h2>Overview</h2>
+      <p>
+        The File System Tree program allows you to create a tree-like structure to represent a file system. You can create nodes with a name and a type (e.g. "folder" or "file"), and add them as children of other nodes. You can also delete nodes. You should be wary of adding an item with the same name as the parent node to the parent node, this will no longer allow you to add further nodes to the child node you just created. In general, stay away from duplicate names and problems occur with insertion and deletion (this is true on your machines file system too). 
+      </p>
+      <h2>Usage</h2>
+      <p>
+        Use the create and delete node cards to add and delete items. Other than that there is not much else needed, it is pretty self explanatory. 
+      </p>
+      <h2>How the Code Works</h2>
+      <pre>
+const System = new Tree();
+System.addNode("Documents", "folder");
+System.addNode("Music", "folder", System.findNode("Documents"));
+System.addNode("Videos", "folder", System.findNode("Documents"));
+System.addNode("song.mp3", "file", System.findNode("Music"));
+System.addNode("video.mp4", "file", System.findNode("Videos"));
+      </pre>
+      <p>
+        In this example, we create a new `Tree` instance and add five nodes to it. The first node is a "folder" type node named "Documents", which is added as a child of the root node. The next two nodes are also "folder" type nodes named "Music" and "Videos", which are added as children of the "Documents" node. Finally, we add two "file" type nodes named "song.mp3" and "video.mp4", which are added as children of the "Music" and "Videos" nodes, respectively.
+      </p>
+    </main>
+
+    <footer>
+      Copyright &copy; 2022 File System Tree
+    </footer>
+    
+  </body>
+</html>
