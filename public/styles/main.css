@@ -102,6 +102,13 @@ a:visited {
     border-radius: 3px;
   }
   
+  label select {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
   button[type="submit"] {
     margin-top: 10px;
     padding: 5px 10px;
@@ -167,18 +174,37 @@ a:visited {
 
 /* ---------------- FILESYSTEM -------------- */
 .node {
-    display: flex;
-    align-items: center;
-    padding: 0.5em;
-    border: 1px solid black;
-  }
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  background-color: #fafafa;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #222;
+  cursor: pointer;
   
-  .children {
-    display: flex;
-    flex-direction: column;
-    margin-left: 1em;
-  }
-  
-  #tree-container{
-      margin-bottom: 9%;
-  }
+  /*FIXME: Maybe remove b2*/
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+}
+
+#tree-container {
+  margin-bottom: 9%;
+}
+
+.hidden {
+  display: none;
+}
+
+.file {
+  color: var(--sub-color);
+  cursor: default;
+}

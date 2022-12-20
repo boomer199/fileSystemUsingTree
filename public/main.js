@@ -109,7 +109,7 @@ class Node {
 
 // Make tree
 System = new Tree();
-System.addNode("User", "User") //ROOT NODE
+System.addNode("User", "Folder") //ROOT NODE
 addNewItem("User", "Desktop", "Folder")
 addNewItem("User", "Downloads", "Folder")
 addNewItem("User", "Applications", "Folder")
@@ -118,14 +118,33 @@ addNewItem("User", "Applications", "Folder")
 
 //--------------------------------- HTML GENERATION -----------------------------------//
 
-function generateHTML(node, container) {
+// create a function to handle the click event for folder nodes
+function toggleFolder(event) {
+  event.stopPropagation();
 
+  const nodeElement = event.currentTarget;
+  const childrenContainer = nodeElement.querySelector(".children");
+  childrenContainer.classList.toggle("hidden");
+}
+
+function generateHTML(node, container) {
   // create a div element for the node
   const nodeElement = document.createElement("div");
   nodeElement.classList.add("node");
 
-  // set the node's name as the text content of the div
-  nodeElement.textContent = node.name;
+  // create a span element for the node's name
+  const nameElement = document.createElement("span");
+  nameElement.textContent = node.name;
+
+  // add the name element to the node element
+  nodeElement.appendChild(nameElement);
+
+  // if the node is not a folder, create a span element for the node's type and add it to the node element
+  if (node.type !== "Folder") {
+    const typeElement = document.createElement("span");
+    typeElement.textContent = `.${node.type}`;
+    nodeElement.appendChild(typeElement);
+  }
 
   // add the node element to the container
   container.appendChild(nodeElement);
@@ -141,11 +160,21 @@ function generateHTML(node, container) {
   for (const child of node.children) {
     generateHTML(child, childrenContainer);
   }
+
+  // if the node is a file, add the "file" class to the node element
+  if (node.type != "Folder") {
+    nodeElement.classList.add("file");
+  } else {
+    // otherwise, the node is a folder, so add the "folder" class and a click event listener to toggle the children
+    nodeElement.classList.add("Folder");
+    nodeElement.addEventListener("click", toggleFolder);
+  }
 }
+
+
 
 const container = document.querySelector("#tree-container");
 generateHTML(System.root, container);
-
 
 
 
