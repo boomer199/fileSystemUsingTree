@@ -195,7 +195,6 @@ function generateHTML(node, container) {
     nodeElement.addEventListener("click", toggleFolder);
   }
 
-  generateNodeHTML(System.root)
 }
 
 
