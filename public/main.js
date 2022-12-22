@@ -110,13 +110,19 @@ class Node {
       }
     }
 
+    let nodeSearchedName = "OOOOO"; 
+
     function searchTree(name) {
       // use the findNode method to search for a node with the given name
       const node = System.findNode(name);
     
       if (node) {
         // if a node was found, return it
+        nodeSearchedName = node.name;
+        container.innerHTML = '';
+        generateHTML(System.root, container);
         return node;
+        
       } else {
         // if no node was found, return a message indicating that the search returned no results
         return "No results found.";
@@ -155,7 +161,7 @@ function toggleFolder(event) {
 function generateHTML(node, container) {
   // create a div element for the node
   const nodeElement = document.createElement("div");
-  nodeElement.classList.add("node");
+  nodeElement.classList.add("node");  
 
   // create a span element for the node's name
   const nameElement = document.createElement("span");
@@ -163,6 +169,10 @@ function generateHTML(node, container) {
 
   // add the name element to the node element
   nodeElement.appendChild(nameElement);
+
+  if(nodeSearchedName == nameElement.innerHTML){
+    nodeElement.classList.add("nodeColor")
+  }
 
   // if the node is not a folder, create a span element for the node's type and add it to the node element
   if (node.type !== "Folder") {
@@ -252,3 +262,6 @@ document.getElementById("search-form").addEventListener("submit", event => {
 
   
 });
+
+
+

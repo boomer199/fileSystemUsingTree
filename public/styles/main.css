@@ -237,3 +237,7 @@ a:visited {
   color: var(--sub-color);
   cursor: default;
 }
+
+.nodeColor {
+  background-color: blue;
+}
